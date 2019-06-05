@@ -20,5 +20,10 @@
   <%= @timesheet_entry.finish_time %>
 </p>
 
+<p>
+  <strong>Amount:</strong>
+  <%= @timesheet_entry.amount %>
+</p>
+
 <%= link_to 'Edit', edit_timesheet_entry_path(@timesheet_entry) %> |
 <%= link_to 'Back', timesheet_entries_path %>
