@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Timesheet Entries</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Task name</th>
+      <th>Entry date</th>
+      <th>Start time</th>
+      <th>Finish time</th>
+      <th>Amount</th>
+
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @timesheet_entries.each do |timesheet_entry| %>
+      <tr>
+        <td><%= timesheet_entry.task_name %></td>
+        <td><%= timesheet_entry.entry_date %></td>
+        <td><%= timesheet_entry.start_time %> - </td>
+        <td><%= timesheet_entry.finish_time %></td>
+        <td> $ <%= timesheet_entry.amount.to_f %></td>
+        <td><%= link_to 'Show', timesheet_entry %></td>
+        <td><%= link_to 'Edit', edit_timesheet_entry_path(timesheet_entry) %></td>
+        <td><%= link_to 'Destroy', timesheet_entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Timesheet Entry', new_timesheet_entry_path %>

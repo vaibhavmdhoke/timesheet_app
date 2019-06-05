@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Task name:</strong>
+  <%= @timesheet_entry.task_name %>
+</p>
+
+<p>
+  <strong>Entry date:</strong>
+  <%= @timesheet_entry.entry_date %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @timesheet_entry.start_time %>
+</p>
+
+<p>
+  <strong>Finish time:</strong>
+  <%= @timesheet_entry.finish_time %>
+</p>
+
+<%= link_to 'Edit', edit_timesheet_entry_path(@timesheet_entry) %> |
+<%= link_to 'Back', timesheet_entries_path %>
