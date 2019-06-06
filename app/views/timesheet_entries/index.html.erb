@@ -2,7 +2,7 @@
 
 <h1>Timesheet Entries</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Task name</th>
@@ -20,7 +20,7 @@
       <tr>
         <td><%= timesheet_entry.task_name %></td>
         <td><%= timesheet_entry.entry_date %></td>
-        <td><%= timesheet_entry.start_time.strftime('%T') %> - </td>
+        <td><%= timesheet_entry.start_time.strftime('%T') %></td>
         <td><%= timesheet_entry.finish_time.strftime('%T') %></td>
         <td> $ <%= timesheet_entry.amount.to_f.round(2) %></td>
         <td><%= link_to 'Show', timesheet_entry %></td>
