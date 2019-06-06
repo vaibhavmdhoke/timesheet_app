@@ -20,9 +20,9 @@
       <tr>
         <td><%= timesheet_entry.task_name %></td>
         <td><%= timesheet_entry.entry_date %></td>
-        <td><%= timesheet_entry.start_time %> - </td>
-        <td><%= timesheet_entry.finish_time %></td>
-        <td> $ <%= timesheet_entry.amount.to_f %></td>
+        <td><%= timesheet_entry.start_time.strftime('%T') %> - </td>
+        <td><%= timesheet_entry.finish_time.strftime('%T') %></td>
+        <td> $ <%= timesheet_entry.amount.to_f.round(2) %></td>
         <td><%= link_to 'Show', timesheet_entry %></td>
         <td><%= link_to 'Edit', edit_timesheet_entry_path(timesheet_entry) %></td>
         <td><%= link_to 'Destroy', timesheet_entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>

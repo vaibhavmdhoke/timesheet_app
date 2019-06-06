@@ -12,12 +12,12 @@
 
 <p>
   <strong>Start time:</strong>
-  <%= @timesheet_entry.start_time %>
+  <%= @timesheet_entry.start_time.strftime('%T') %>
 </p>
 
 <p>
   <strong>Finish time:</strong>
-  <%= @timesheet_entry.finish_time %>
+  <%= @timesheet_entry.finish_time.strftime('%T') %>
 </p>
 
 <p>

@@ -25,7 +25,6 @@ class TimesheetEntriesController < ApplicationController
   # POST /timesheet_entries.json
   def create
     @timesheet_entry = TimesheetEntry.new(timesheet_entry_params)
-
     respond_to do |format|
       if @timesheet_entry.save
         format.html { redirect_to @timesheet_entry, notice: 'Timesheet entry was successfully created.' }
