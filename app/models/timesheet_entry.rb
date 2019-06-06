@@ -10,8 +10,8 @@ class TimesheetEntry < ApplicationRecord
       errors.add(:finish_time, 'Finish Time should not be before or equal to Start Time')
     elsif check_for_conflicts
       # binding.pry
-      errors.add(:finish_time, 'Time Conflicts with other schedule')
-      errors.add(:start_time, 'Time Conflicts with other schedule')
+      errors.add(:finish_time, 'Conflicts with other schedule')
+      errors.add(:start_time, 'Conflicts with other schedule')
     else
       true
     end
@@ -57,18 +57,18 @@ class TimesheetEntry < ApplicationRecord
     conflict_found = false
     entries.each do |entry|
     ## 1. check for conflicting
-      if entry.start_time > start_time && start_time < entry.finish_time ## New Entry is in between
+      if start_time < entry.start_time && entry.start_time < finish_time
         conflict_found = true
-        errors.add(:start_time, "Time Conflicts with other schedule task, #{entry.task_name}, start")
-      elsif entry.start_time > finish_time && finish_time < entry.finish_time
+        # errors.add(:start_time, "Time Conflicts with other schedule task, #{entry.task_name}, start")
+      elsif start_time < entry.finish_time && entry.finish_time < finish_time
         conflict_found = true
-        errors.add(:finish_time, "Time Conflicts with other schedule task #{entry.task_name}, finish")
-      elsif start_time > entry.start_time && entry.start_time < finish_time 
+        # errors.add(:finish_time, "Time Conflicts with other schedule task #{entry.task_name}, finish")
+      elsif start_time < entry.start_time && entry.start_time < finish_time
         conflict_found = true
-        errors.add(:finish_time, "Time Conflicts with other schedule task #{entry.task_name}, start ")
-      elsif start_time > entry.finish_time && entry.finish_time < finish_time 
+        # errors.add(:finish_time, "Time Conflicts with other schedule task #{entry.task_name}, start ")
+      elsif start_time < entry.finish_time && entry.finish_time < finish_time
         conflict_found = true
-        errors.add(:finish_time, "Time Conflicts with other schedule task #{entry.task_name}, start ")
+        # errors.add(:finish_time, "Time Conflicts with other schedule task #{entry.task_name}, start ")
       end
     end
     conflict_found
