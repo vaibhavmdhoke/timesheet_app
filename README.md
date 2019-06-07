@@ -1,24 +1,14 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Ruby version: 2.3.3
 
-Things you may want to cover:
+* System dependencies Timezone sensitive, please keep your system time as Melbourne 
 
-* Ruby version
+* Database creation: rake db:create
 
-* System dependencies
+* Database initialization: rake db:migrate, 
+                           rake db:seed ## for seed data
 
-* Configuration
+* How to run the test suite: rspec spec
 
-* Database creation
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
