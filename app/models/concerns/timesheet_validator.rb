@@ -4,7 +4,7 @@ class TimesheetValidator < ActiveModel::Validator
     timesheet_entries_validation(record)
 	end
 
-	def timesheet_entries_validation(record)
+  def timesheet_entries_validation(record)
     default_start_time = start_time_modifier(record)
     default_finish_time = finish_time_modifier(record)
     if default_start_time >= default_finish_time
@@ -24,7 +24,6 @@ class TimesheetValidator < ActiveModel::Validator
   def check_for_conflicts(record, default_start_time, default_finish_time)
     entries = TimesheetEntry.where(entry_date: record.entry_date).where.not(id: record.id)
     return false if entries.nil?
-
     conflict_found = false
     entries.each do |entry|
       entry_start_time = start_time_modifier(entry)
@@ -33,9 +32,11 @@ class TimesheetValidator < ActiveModel::Validator
         conflict_found = true
       elsif default_start_time < entry_finish_time && entry_finish_time < default_finish_time
         conflict_found = true
-      elsif default_start_time < entry_start_time && entry_start_time < default_finish_time
+      elsif entry_start_time < default_finish_time && default_finish_time < entry_finish_time
         conflict_found = true
-      elsif default_start_time < entry_finish_time && entry_finish_time < default_finish_time
+      elsif entry_start_time < default_start_time && default_start_time < entry_finish_time
+        conflict_found = true
+      elsif default_start_time == entry_start_time || default_start_time == entry_finish_time || default_finish_time == entry_start_time || default_finish_time == entry_finish_time
         conflict_found = true
       end
     end
